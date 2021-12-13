@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>User:</strong>
-  <%= @book_review.user_id %>
+  <strong>Title:</strong>
+  <%= @book.title %>
 </p>
-
 <p>
-  <strong>Book:</strong>
-  <%= @book_review.book_id %>
+  <strong>Number of pages:</strong>
+  <%= @book.number_of_pages %>
 </p>
-
 <p>
-  <strong>Review:</strong>
-  <%= @book_review.review %>
+  <strong>Detail:</strong>
+  <%= @book.detail %>
+</p>
+<p>
+  <%= image_tag @book.image if @book.image.attached? %>
 </p>
 <h2>Review From</h2>
 <%= form_with(model: @book_review, local: true) do |form| %>
@@ -24,5 +24,13 @@
     <%= form.submit %>
   </div>
 <% end %>
-<%= link_to 'Edit', edit_book_review_path(@book_review) %> |
-<%= link_to 'Back', book_reviews_path %>
+<h2>Review List</h2>
+<ul>
+  <% @book.book_review.each do |book_review|%>
+   <li><%= book_review.review %>
+    (<i><%= book_review.user.name if book_review.user%></i>)</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
