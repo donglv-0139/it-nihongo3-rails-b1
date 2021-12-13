@@ -1,10 +1,10 @@
-<%= form_with(model: book, local: true) do |form| %>
-  <% if book.errors.any? %>
+<%= form_with(model: book_review, local: true) do |form| %>
+  <% if book_review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <h2><%= pluralize(book_review.errors.count, "error") %> prohibited this book_review from being saved:</h2>
 
       <ul>
-        <% book.errors.full_messages.each do |message| %>
+        <% book_review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,23 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
   </div>
 
   <div class="field">
-    <%= form.label :number_of_pages %>
-    <%= form.number_field :number_of_pages %>
+    <%= form.label :book_id %>
+    <%= form.number_field :book_id %>
   </div>
-  
+
   <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_area :detail %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :Image %>
-    <%= form.file_field :image %>
+    <%= form.label :review %>
+    <%= form.text_area :review %>
   </div>
 
   <div class="actions">

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
   get 'static_pages/home'
+  resources :book_reviews
   devise_for :users
   resources :users
   resources :books
